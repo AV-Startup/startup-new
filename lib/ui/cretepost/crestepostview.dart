@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -181,6 +182,11 @@ class _CreatePostState extends State<CreatePost> {
                         SharedPreferences prefs =
                             await SharedPreferences.getInstance();
                         final FirebaseAuth auth = FirebaseAuth.instance;
+                        //final timestamp = Timestamp.now();
+                        final miilisincessinceepoch =
+                            DateTime.now().millisecondsSinceEpoch;
+                        final daysSinceEpoch =
+                            miilisincessinceepoch ~/ 86400000;
 
                         DateTime dt = DateTime.now();
 
@@ -189,11 +195,12 @@ class _CreatePostState extends State<CreatePost> {
                           publisherId: auth.currentUser.uid,
                           desc: descController.text,
                           title: titleController.text,
-                          flagCode: "prefs.getString('countryCode')",
+                          name: prefs.getString('name'),
+                          flagCode: prefs.getString('countryCode'),
                           timestamp: dt.toString(),
-                          epochs: '2000',
+                          epochs: daysSinceEpoch,
                           keywords: keys.join(","),
-                          likeCount: '0',
+                          likeCount: 0,
                         ))
                             .then((value) {
                           showToast('Posted Successfully');

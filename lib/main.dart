@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 //import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
 //import 'ui/views/home/home_view.dart';
+import 'services/dialogservice.dart';
 import 'services/router.gr.dart' as k;
 import 'package:sprinkle/services/locator.dart';
 import 'services/cuatombottomsheet.dart';
@@ -20,6 +21,7 @@ void main() async {
   await Firebase.initializeApp();
   // setupDialogUi();
   setupLoactor();
+  setupDialogUi();
 
   setupBottomSheetUi();
   runApp(MyApp());

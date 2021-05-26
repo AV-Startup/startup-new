@@ -1,15 +1,15 @@
 import 'package:flag/flag.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+//import 'package:flutter/services.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sprinkle/services/locator.dart';
-import 'package:sprinkle/ui/Editpost/editprofileviewmodel.dart';
+//import 'package:sprinkle/ui/Editpost/editprofileviewmodel.dart';
 import 'package:sprinkle/ui/profile/profileviewmodel.dart';
 import 'package:stacked/stacked.dart';
 import 'package:sprinkle/capitilize.dart';
-import 'package:stacked_services/stacked_services.dart';
+//import 'package:stacked_services/stacked_services.dart';
 
 class ProfileView extends StatelessWidget {
   @override
@@ -17,16 +17,8 @@ class ProfileView extends StatelessWidget {
     //SystemChrome.setEnabledSystemUIOverlays([]);
     return ViewModelBuilder<ProfileViewModel>.reactive(
       disposeViewModel: false,
-      //onModelReady: (viewModel) => viewModel.setgetdatafuture(),
-      createNewModelOnInsert: true,
-      //fireOnModelReadyOnce: true,
-      // Inidicate that we only want to initialise a specialty viewmodel once
-      //initialiseSpecialViewModelsOnce: true,
+      initialiseSpecialViewModelsOnce: true,
       builder: (context, model, child) {
-        // child:
-        // Center(
-        //   child: CircularProgressIndicator(),
-        // );
         return Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -34,11 +26,7 @@ class ProfileView extends StatelessWidget {
                   end: Alignment.bottomRight,
                   colors: [Colors.purple, Colors.blue])),
           child: Scaffold(
-            // appBar: CupertinoNavigationBar(
-            //   middle: Text('Profile'),
-            // ),
             backgroundColor: Colors.transparent,
-            //backgroundColor: Colors.white,
             body: !(model.isBusy)
                 ? Padding(
                     padding: const EdgeInsets.all(3.0),
@@ -151,15 +139,15 @@ class ProfileView extends StatelessWidget {
                                                       color: Colors.black,
                                                     ),
                                                   ),
-                                                  FittedBox(
-                                                    child: Flag(
-                                                      model.data.countryCode
-                                                          .toString(),
-                                                      height: 30,
-                                                      width: 55,
-                                                      fit: BoxFit.fill,
-                                                    ),
-                                                  ),
+                                                  // FittedBox(
+                                                  //   child: Flag(
+                                                  //     model.data.countryCode
+                                                  //         .toString(),
+                                                  //     height: 30,
+                                                  //     width: 55,
+                                                  //     fit: BoxFit.fill,
+                                                  //   ),
+                                                  // ),
                                                 ],
                                               ),
                                               Row(
@@ -219,32 +207,14 @@ class ProfileView extends StatelessWidget {
                                             ]),
                                       ),
                                     ),
-                                    /////////////////////neumo end
-                                    // SizedBox(
-                                    //   height: 6,
-                                    // ),
+
                                     Row(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          /*CupertinoButton(
-                                            color: Colors.blueGrey,
-                                            child: Text('Edit Profile'),
-                                            onPressed: () {
-                                              model.showBottom(mode: model);
-                                            },
-                                          )*/
                                           Container(
-                                            // decoration: const BoxDecoration(
-                                            //   gradient: LinearGradient(
-                                            //     colors: <Color>[
-                                            //       Color(0xFF0D47A1),
-                                            //       Color(0xFF42A5F5),
-                                            //     ],
-                                            //   ),
-                                            // ),
                                             child: ElevatedButton(
                                                 style: ElevatedButton.styleFrom(
                                                   primary: Colors.cyanAccent,
@@ -279,52 +249,23 @@ class ProfileView extends StatelessWidget {
                                           width: 120,
                                           child: Image.asset('assets/user.png'),
                                         )
-                                        /*SvgPicture.asset(
-                                              'assets/user-circle.svg',
-                                              color: Colors.tealAccent,
-                                            ))*/
                                       ],
                                     ),
                                   ),
                                 ],
                               ),
                             ),
-                            //],
-
-                            // )
-
-                            //Text(model.data.phone.toString()),
-                            // CupertinoButton(
-                            //   child: Text('butt'),
-                            //   onPressed: () {
-                            //     print(model.data.name);
-                            //     print(model.data.email);
-                            //     print(model.data.userRole);
-                            //     print(model.data.countryCode);
-                            //   },
-                            // )
-                            //Text(model.data['email']),
-                            //your stuff
                           ],
                         ),
                       ],
                     ),
                   )
-                // )
-                //]
-                // )
-                //)
                 : Center(
                     child: CircularProgressIndicator(),
                   ),
-            // floatingActionButton: FloatingActionButton(
-            //   child: Icon(Icons.ac_unit_outlined),
-            //   onPressed: () {},
-            // ),
           ),
         );
       },
-
       viewModelBuilder: () => locator<ProfileViewModel>(),
     );
   }

@@ -8,7 +8,7 @@ import 'package:animations/animations.dart';
 //import 'package:stacked_services/stacked_services.dart';
 //import 'package:sprinkle/services/locator.dart';
 import '../page/page.dart';
-import '../Posts/post_view.dart';
+import '../Posts/paginationdata.dart';
 import 'home_view_model.dart';
 
 class Home extends StatelessWidget {
@@ -35,7 +35,7 @@ class Home extends StatelessWidget {
                 )
               : BottomNavigationBar(
                   type: BottomNavigationBarType.fixed,
-                  backgroundColor: Colors.white,
+                  backgroundColor: Colors.indigoAccent,
                   //model.currentIndex == 2 ? Colors.transparent : Colors.white,
                   //backgroundColor: Colors.grey[800],
                   currentIndex: model.currentIndex,
@@ -50,7 +50,7 @@ class Home extends StatelessWidget {
                         width: 30,
                         color: model.currentIndex == 0
                             ? Colors.black
-                            : Colors.blueGrey,
+                            : Colors.white,
                       ),
                     ),
                     BottomNavigationBarItem(
@@ -61,7 +61,7 @@ class Home extends StatelessWidget {
                         width: 30,
                         color: model.currentIndex == 1
                             ? Colors.black
-                            : Colors.blueGrey,
+                            : Colors.white,
                       ),
                     ),
                     BottomNavigationBarItem(
@@ -72,7 +72,7 @@ class Home extends StatelessWidget {
                         width: 30,
                         color: model.currentIndex == 2
                             ? Colors.black
-                            : Colors.blueGrey,
+                            : Colors.white,
                       ),
                     ),
                   ],
@@ -104,7 +104,7 @@ class Home extends StatelessWidget {
   Widget getViewForIndex(int index) {
     switch (index) {
       case 0:
-        return PostView();
+        return Postpagination();
       case 1:
         return CreatePost();
       //PostsView();

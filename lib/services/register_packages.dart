@@ -1,4 +1,7 @@
 import 'package:injectable/injectable.dart';
+import 'package:sprinkle/services/realtimedb.dart';
+import 'package:sprinkle/ui/ViewOtherProf/ViewOtherProfmodel.dart';
+import 'package:sprinkle/ui/ViewOtherProf/ViewProfile.dart';
 import 'package:sprinkle/ui/profile/profileviewmodel.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'Firebase_auth.dart';
@@ -6,7 +9,7 @@ import 'Firebase_core.dart';
 import 'Firestore_service.dart';
 import 'Firebase_messaging.dart';
 import 'Toastservices.dart';
-import '../ui/Posts/post_view_model.dart';
+//import '../ui/Posts/post_view_model.dart';
 import 'api.dart';
 import 'post_service.dart';
 
@@ -34,6 +37,8 @@ abstract class ThirdPartyServicesModules {
   ToastService get toastservice;
   @lazySingleton
   BottomSheetService get bottomSheetService;
-  // @lazySingleton
-  // PostsService get postservice;
+  @lazySingleton
+  RealTimedb get realtimedb;
+  @lazySingleton
+  ViewOtherProfileModel get viewOtherProfileModel;
 }

@@ -14,8 +14,10 @@ import 'Firebase_core.dart';
 import 'Firestore_service.dart';
 import '../ui/profile/profileviewmodel.dart';
 import 'Firebase_messaging.dart';
+import 'realtimedb.dart';
 import 'register_packages.dart';
 import 'Toastservices.dart';
+import '../ui/ViewOtherProf/ViewOtherProfmodel.dart';
 
 /// adds generated dependencies
 /// to the provided [GetIt] instance
@@ -43,7 +45,10 @@ GetIt $initGetIt(
       () => thirdPartyServicesModules.profileviewmodel);
   gh.lazySingleton<PushNotificationService>(
       () => thirdPartyServicesModules.pushnotificationservice);
+  gh.lazySingleton<RealTimedb>(() => thirdPartyServicesModules.realtimedb);
   gh.lazySingleton<ToastService>(() => thirdPartyServicesModules.toastservice);
+  gh.lazySingleton<ViewOtherProfileModel>(
+      () => thirdPartyServicesModules.viewOtherProfileModel);
   return get;
 }
 
@@ -68,5 +73,9 @@ class _$ThirdPartyServicesModules extends ThirdPartyServicesModules {
   PushNotificationService get pushnotificationservice =>
       PushNotificationService();
   @override
+  RealTimedb get realtimedb => RealTimedb();
+  @override
   ToastService get toastservice => ToastService();
+  @override
+  ViewOtherProfileModel get viewOtherProfileModel => ViewOtherProfileModel();
 }

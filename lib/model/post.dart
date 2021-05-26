@@ -5,14 +5,16 @@ class Posts {
   final String publisherId;
   final String desc;
   final String timestamp;
-  final String epochs;
+  final int epochs;
   final String flagCode;
-  final String likeCount;
+  final int likeCount;
   final String keywords;
+  final String name;
 
   Posts(
       {@required this.publisherId,
       @required this.desc,
+      this.name,
       this.title,
       this.timestamp,
       this.epochs,
@@ -22,6 +24,7 @@ class Posts {
 
   Map<String, dynamic> toMap() {
     return {
+      'name': name,
       'title': title,
       'publisherId': publisherId,
       'desc': desc,
@@ -38,6 +41,7 @@ class Posts {
 
     return Posts(
         title: map['title'],
+        name: map['name'],
         publisherId: documentId,
         desc: map['desc'],
         timestamp: map['timestamp'],

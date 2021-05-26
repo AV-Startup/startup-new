@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -22,7 +23,42 @@ class _FormDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Dialog(child: Text('data'));
+    return Dialog(
+        child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        decoration:
+            BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20))),
+        height: 150,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            // TextField(
+            //   decoration: new InputDecoration(
+            //     focusedBorder: OutlineInputBorder(
+            //       borderSide: BorderSide(color: Colors.black, width: 1.0),
+            //     ),
+            //     enabledBorder: OutlineInputBorder(
+            //       borderSide: BorderSide(color: Colors.black, width: 1.0),
+            //     ),
+            //     hintText: 'Write Report',
+            //   ),
+            // ),
+            // SizedBox(
+            //   height: 10,
+            // ),
+            CupertinoButton(
+              color: Colors.blueGrey,
+              child: Text('Ok'),
+              onPressed: () {
+                request.customData();
+              },
+            )
+          ],
+        ),
+      ),
+    ));
   }
 }
 
