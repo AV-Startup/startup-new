@@ -1,4 +1,4 @@
-# sprinkle
+# startup made with mvvm architecture
 
 
 
