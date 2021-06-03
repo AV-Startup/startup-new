@@ -18,7 +18,7 @@ import 'package:sprinkle/ui/profile/profileview.dart';
   MaterialRoute(page: CreatePost),
   MaterialRoute(page: LoginView),
   MaterialRoute(page: ProfileView),
-  MaterialRoute(page: EditPostView),
+  //MaterialRoute(page: EditPostView),
   MaterialRoute(page: Home),
   MaterialRoute(page: Splash, initial: true),
 ])

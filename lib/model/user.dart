@@ -1,6 +1,6 @@
 class User {
   final String id;
-  String name;
+  final String fullName;
   final String email;
   final String userRole;
   String about;
@@ -9,7 +9,7 @@ class User {
 
   User(
       {this.id,
-      this.name,
+      this.fullName,
       this.email,
       this.userRole,
       this.about,
@@ -20,7 +20,16 @@ class User {
       : id = data['id'],
         about = data['about'],
         phone = data['phone'],
-        name = data['name'],
+        fullName = data['fullName'],
+        email = data['email'],
+        countryCode = data['countryCode'],
+        userRole = data['userRole'];
+
+  User.fromRTDBData(Map<dynamic, dynamic> data)
+      : id = data['id'],
+        about = data['about'],
+        phone = data['phone'],
+        fullName = data['fullName'],
         email = data['email'],
         countryCode = data['countryCode'],
         userRole = data['userRole'];
@@ -28,7 +37,7 @@ class User {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'fullName': name,
+      'fullName': fullName,
       'email': email,
       'userRole': userRole,
       'about': about,

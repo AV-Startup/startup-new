@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:firebase_auth/firebase_auth.dart' as a;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sprinkle/services/realtimedb.dart';
 import 'Firestore_service.dart';
 import 'package:sprinkle/services/locator.dart';
 import 'package:sprinkle/model/user.dart';
@@ -13,6 +14,8 @@ class AuthenticationService {
   final a.FirebaseAuth _firebaseAuth = a.FirebaseAuth.instance;
   final FirestoreService _firestoreService = locator<FirestoreService>();
   final CoreService _coreservice = locator<CoreService>();
+  final RealTimedb _realTimedb = locator<RealTimedb>();
+
   CollectionReference users = FirebaseFirestore.instance.collection('users');
 
   Future getdata(String uid) async {
@@ -22,7 +25,7 @@ class AuthenticationService {
     //var snapshot = users.doc(uid);
 
     //name = data.data.data()['name'];
-    prefs.setString('name', name);
+    prefs.setString('fullName', name);
     prefs.setString('email', snp.data()['email']);
     prefs.setString('countryCode', snp.data()['countryCode']);
     prefs.setString('about', snp.data()['about']);
@@ -67,7 +70,7 @@ class AuthenticationService {
       _currentUser = User(
         id: authResult.user.uid,
         email: email,
-        name: fullName,
+        fullName: fullName,
         userRole: role,
         phone: phone,
         about: 'Hey i am new User',
@@ -75,8 +78,8 @@ class AuthenticationService {
       );
       //await getdata(authResult.user.uid);
       //await _coreservice.adddetails(email);
-      await _firestoreService.createUser(_currentUser);
-      prefs.setString('name', fullName);
+      await _realTimedb.createUser(_currentUser);
+      prefs.setString('fullName', fullName);
       prefs.setString('email', email);
       prefs.setString('countryCode', countryCode);
       prefs.setString('about', 'Hey i am new User');
@@ -99,10 +102,10 @@ class AuthenticationService {
 
   Future _populateCurrentUser(a.User user) async {
     if (user != null) {
-      await _firestoreService.getUser(user.uid).then((value) {
+      await _realTimedb.getUser(user.uid).then((value) {
         print(value.toString());
       });
-      _currentUser = await _firestoreService.getUser(user.uid);
+      _currentUser = await _realTimedb.getUser(user.uid);
     }
   }
 }

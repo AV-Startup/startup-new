@@ -51,192 +51,227 @@ class _CreatePostState extends State<CreatePost> {
     return ViewModelBuilder<CreatePostViewModel>.reactive(
       builder: (context, model, child) => Scaffold(
         key: _scaffoldKey,
-        appBar: CupertinoNavigationBar(
-          middle: Text('Create Post'),
-        ),
+        backgroundColor: Colors.blueGrey,
+        // appBar: CupertinoNavigationBar(
+        //   middle: Text('Create Post'),
+        // ),
         body: SingleChildScrollView(
-          child: Column(children: [
-            Form(
-              key: _formKey,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(children: [
-                  SizedBox(
-                    height: 10,
-                  ),
-                  // Divider(),
-                  Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: TextFormField(
-                      focusNode: focusNode,
-                      //autofocus: true,
-                      //onEditingComplete: (() => focusNode.requestFocus()),
-                      controller: titleController,
-                      onChanged: model.onTitleChanged,
-                      maxLengthEnforced: true,
-                      maxLength: 50,
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          return 'Enter Valid Title';
-                        }
-                        return null;
-                      },
-                      decoration: InputDecoration(
-                          counterText: '',
-                          border: OutlineInputBorder(),
-                          labelText: 'Title'),
-                    ),
-                  ),
-                  //Divider(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text("${model.titleLength.toString()}/50",
-                          style: TextStyle(fontSize: 15)),
-                    ],
-                  ),
-                  //Divider(),
-                  Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: TextFormField(
-                      // focusNode: focusNode,
-                      controller: descController,
-                      validator: (value) {
-                        if (value.trim().length != 10) {
-                          return 'Enter valid Description';
-                        }
-                        return null;
-                      },
-                      maxLengthEnforced: true,
-                      maxLength: 50,
-                      //keyboardType: TextInputType.number,
-                      onChanged: model.onDescChanged,
-                      decoration: InputDecoration(
-                        counterText: '',
-                        border: OutlineInputBorder(),
-                        labelText: 'Description',
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(8, 100, 8, 0),
+            child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              child: Column(children: [
+                SizedBox(
+                  height: 25,
+                ),
+                Form(
+                  key: _formKey,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(children: [
+                      SizedBox(
+                        height: 10,
                       ),
-                    ),
-                  ),
-                  //Divider(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text("${model.selectedRole.toString()}/50",
-                          style: TextStyle(fontSize: 15)),
-                    ],
-                  ),
-                  //Divider(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Container(
-                        height: 90,
-                        width: 270,
-                        child: Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: TextFormField(
-                            controller: keywordController,
-                            validator: (value) {
-                              if (value.trim().length != 10) {
-                                return 'Enter keywords';
-                              }
-                              return null;
-                            },
-                            maxLengthEnforced: true,
-                            maxLength: 50,
-                            //keyboardType: TextInputType.number,
-                            //onChanged: model.onReqChanged,
-                            decoration: InputDecoration(
+                      // Divider(),
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: TextFormField(
+                          focusNode: focusNode,
+                          //autofocus: true,
+                          //onEditingComplete: (() => focusNode.requestFocus()),
+                          controller: titleController,
+                          onChanged: model.onTitleChanged,
+                          maxLengthEnforced: true,
+                          maxLength: 50,
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'Enter Valid Title';
+                            }
+                            return null;
+                          },
+                          decoration: InputDecoration(
                               counterText: '',
-                              border: OutlineInputBorder(),
-                              labelText: 'KeyWords',
+                              //border: OutlineInputBorder(),
+                              border: new OutlineInputBorder(
+                                borderRadius: new BorderRadius.circular(25.0),
+                                borderSide: new BorderSide(),
+                              ),
+                              labelText: 'Title'),
+                        ),
+                      ),
+                      //Divider(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text("${model.titleLength.toString()}/50",
+                              style: TextStyle(fontSize: 15)),
+                        ],
+                      ),
+                      //Divider(),
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: TextFormField(
+                          // focusNode: focusNode,
+                          controller: descController,
+                          validator: (value) {
+                            if (value.trim().length != 10) {
+                              return 'Enter valid Description';
+                            }
+                            return null;
+                          },
+                          maxLengthEnforced: true,
+                          maxLength: 50,
+                          //keyboardType: TextInputType.number,
+                          onChanged: model.onDescChanged,
+                          decoration: InputDecoration(
+                            counterText: '',
+                            border: new OutlineInputBorder(
+                              borderRadius: new BorderRadius.circular(25.0),
+                              borderSide: new BorderSide(),
                             ),
+                            labelText: 'Description',
                           ),
                         ),
                       ),
-                      SizedBox(
-                        width: 2,
+                      //Divider(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text("${model.selectedRole.toString()}/50",
+                              style: TextStyle(fontSize: 15)),
+                        ],
                       ),
-                      ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.blueGrey,
+                      //Divider(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Container(
+                            height: 90,
+                            width: 270,
+                            child: Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: TextFormField(
+                                controller: keywordController,
+                                validator: (value) {
+                                  if (value.trim().length != 10) {
+                                    return 'Enter keywords';
+                                  }
+                                  return null;
+                                },
+                                maxLengthEnforced: true,
+                                maxLength: 50,
+                                //keyboardType: TextInputType.number,
+                                //onChanged: model.onReqChanged,
+                                decoration: InputDecoration(
+                                  counterText: '',
+                                  border: new OutlineInputBorder(
+                                    borderRadius:
+                                        new BorderRadius.circular(25.0),
+                                    borderSide: new BorderSide(),
+                                  ),
+                                  labelText: 'KeyWords',
+                                ),
+                              ),
+                            ),
                           ),
-                          onPressed: () {
-                            keys.add(keywordController.text);
+                          SizedBox(
+                            width: 2,
+                          ),
+                          ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.blue.shade200,
+                              ),
+                              onPressed: () {
+                                keys.add(keywordController.text);
+                                keywordController.clear();
+                              },
+                              child: Text(
+                                'Add',
+                                style: TextStyle(color: Colors.black),
+                              ))
+                        ],
+                      ),
+                      Divider(),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Divider(),
+                      CupertinoButton(
+                          color: Colors.blue.shade200,
+                          child: Text(
+                            'Publish',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                          onPressed: () async {
+                            FocusScope.of(context).unfocus();
+                            SharedPreferences prefs =
+                                await SharedPreferences.getInstance();
+                            final FirebaseAuth auth = FirebaseAuth.instance;
+                            //final timestamp = Timestamp.now();
+                            final miilisincessinceepoch =
+                                DateTime.now().millisecondsSinceEpoch;
+                            final daysSinceEpoch =
+                                miilisincessinceepoch ~/ 86400000;
+
+                            DateTime dt = DateTime.now();
+
+                            model
+                                .submit(Posts(
+                              publisherId: auth.currentUser.uid,
+                              desc: descController.text,
+                              title: titleController.text,
+                              fullName: prefs.getString('fullName'),
+                              flagCode: prefs.getString('countryCode'),
+                              timestamp: dt.toString(),
+                              epochs: daysSinceEpoch,
+                              keywords: keys.join(","),
+                              likeCount: 0,
+                            ))
+                                .then((value) {
+                              showToast('Posted Successfully');
+                            });
                             keywordController.clear();
-                          },
-                          child: Text('Add'))
-                    ],
+                            descController.clear();
+                            titleController.clear();
+                            //model.submit(Posts());
+
+                            // prefs = await SharedPreferences.getInstance();
+                            // DateTime dt = DateTime.now();
+
+                            // fs
+                            //     .createPost(Post(
+                            //   publisherId: auth.currentUser.uid,
+                            //   desc: descController.text,
+                            //   title: titleController.text,
+                            //   flagCode: prefs.getString('countryCode'),
+                            //   timestamp: dt.toString(),
+                            //   epochs: '2000',
+                            //   keywords: keys.join(","),
+                            //   likeCount: '0',
+                            // ))
+                            //     .then((value) {
+                            //   showToast('Posted Successfully');
+                            // });
+                            // keywordController.clear();
+                            // descController.clear();
+                            // titleController.clear();
+                          }),
+                    ]),
                   ),
-                  Divider(),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Divider(),
-                  CupertinoButton(
-                      color: Colors.blueGrey,
-                      child: Text('Publish'),
-                      onPressed: () async {
-                        FocusScope.of(context).unfocus();
-                        SharedPreferences prefs =
-                            await SharedPreferences.getInstance();
-                        final FirebaseAuth auth = FirebaseAuth.instance;
-                        //final timestamp = Timestamp.now();
-                        final miilisincessinceepoch =
-                            DateTime.now().millisecondsSinceEpoch;
-                        final daysSinceEpoch =
-                            miilisincessinceepoch ~/ 86400000;
-
-                        DateTime dt = DateTime.now();
-
-                        model
-                            .submit(Posts(
-                          publisherId: auth.currentUser.uid,
-                          desc: descController.text,
-                          title: titleController.text,
-                          name: prefs.getString('name'),
-                          flagCode: prefs.getString('countryCode'),
-                          timestamp: dt.toString(),
-                          epochs: daysSinceEpoch,
-                          keywords: keys.join(","),
-                          likeCount: 0,
-                        ))
-                            .then((value) {
-                          showToast('Posted Successfully');
-                        });
-                        keywordController.clear();
-                        descController.clear();
-                        titleController.clear();
-                        //model.submit(Posts());
-
-                        // prefs = await SharedPreferences.getInstance();
-                        // DateTime dt = DateTime.now();
-
-                        // fs
-                        //     .createPost(Post(
-                        //   publisherId: auth.currentUser.uid,
-                        //   desc: descController.text,
-                        //   title: titleController.text,
-                        //   flagCode: prefs.getString('countryCode'),
-                        //   timestamp: dt.toString(),
-                        //   epochs: '2000',
-                        //   keywords: keys.join(","),
-                        //   likeCount: '0',
-                        // ))
-                        //     .then((value) {
-                        //   showToast('Posted Successfully');
-                        // });
-                        // keywordController.clear();
-                        // descController.clear();
-                        // titleController.clear();
-                      }),
-                ]),
-              ),
+                ),
+              ]),
             ),
-          ]),
+          ),
         ),
         //),);
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.cancel_outlined),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       viewModelBuilder: () => CreatePostViewModel(),
     );

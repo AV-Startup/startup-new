@@ -23,7 +23,7 @@ class FirestoreService {
 
   // bool _hasMorePosts = true;
 
-  Future updateProfile(String name, String bio) async {
+  /* Future updateProfile(String name, String bio) async {
     bool val = false;
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await _usersCollectionReference.doc(auth.currentUser.uid).update({
@@ -43,13 +43,13 @@ class FirestoreService {
       //showToast('Failed ');
     });
     return val;
-  }
+  }*/
 
   Future getdetailProfile() async {
     prefs = await SharedPreferences.getInstance();
 
     return User(
-      name: prefs.getString('name'),
+      fullName: prefs.getString('fullName'),
       email: prefs.getString('email'),
       countryCode: prefs.getString('countryCode'),
       about: prefs.getString('about'),
@@ -68,7 +68,8 @@ class FirestoreService {
   //   prefs = await SharedPreferences.getInstance();
   //   DateTime dt = DateTime.now();
   // }
-
+////////////////////////////////////--------------------------------------------------
+/*
   Future createUser(User user) async {
     try {
       await _usersCollectionReference.doc(user.id).set(user.toJson());
@@ -84,9 +85,11 @@ class FirestoreService {
   Future getUser(String uid) async {
     try {
       var userData = await _usersCollectionReference.doc(uid).get();
+      //print(userData.data().toString());
       // userData.get() => then(User.fromData(userData.data) {
       //   print()
       // });
+      //print("rrrrrrr" + userData.data().toString());
       return User.fromData(userData.data());
     } catch (e) {
       if (e is PlatformException) {
@@ -94,63 +97,63 @@ class FirestoreService {
       }
 
       return e.toString();
-    }
-  }
-
-  // Stream listenToPostsRealTime() {
-  //   _requestPosts();
-  //   return _postsController.stream;
-  // }
-
-  // void _requestPosts() {
-  //   var pagePostsQuery = _postsCollectionReference
-  //       .orderBy('title')
-  //       // #3: Limit the amount of results
-  //       .limit(20);
-
-  //   if (_lastDocument != null) {
-  //     pagePostsQuery = pagePostsQuery.startAfterDocument(_lastDocument);
-  //   }
-
-  //   if (!_hasMorePosts) return;
-
-  //   var currentRequestIndex = _allPagedResults.length;
-
-  //   pagePostsQuery.snapshots().listen((postsSnapshot) {
-  //     if (postsSnapshot.docs.isNotEmpty) {
-  //       var posts = postsSnapshot.docs
-  //           .map((snapshot) => Posts.fromMap(snapshot.data(), snapshot.id))
-  //           .where((mappedItem) => mappedItem.title != null)
-  //           .toList();
-  //       var pageExists = currentRequestIndex < _allPagedResults.length;
-
-  //       // If the page exists update the posts for that page
-  //       if (pageExists) {
-  //         _allPagedResults[currentRequestIndex] = posts;
-  //       }
-  //       // If the page doesn't exist add the page data
-  //       else {
-  //         _allPagedResults.add(posts);
-  //       }
-
-  //       // Concatenate the full list to be shown
-  //       var allPosts = _allPagedResults.fold<List<Posts>>(List<Posts>(),
-  //           (initialValue, pageItems) => initialValue..addAll(pageItems));
-
-  //       //  Broadcase all posts
-  //       _postsController.add(allPosts);
-  //       // Add the posts onto the controller
-  //       //_postsController.add(posts);
-  //       // Save the last document from the results only if it's the current last page
-  //       if (currentRequestIndex == _allPagedResults.length - 1) {
-  //         _lastDocument = postsSnapshot.docs.last;
-  //       }
-
-  //       // Determine if there's more posts to request
-  //       _hasMorePosts = posts.length == 20;
-  //     }
-  //   });
-  // }
-
-  // void requestMoreData() => _requestPosts();
+    }*/
 }
+
+// Stream listenToPostsRealTime() {
+//   _requestPosts();
+//   return _postsController.stream;
+// }
+
+// void _requestPosts() {
+//   var pagePostsQuery = _postsCollectionReference
+//       .orderBy('title')
+//       // #3: Limit the amount of results
+//       .limit(20);
+
+//   if (_lastDocument != null) {
+//     pagePostsQuery = pagePostsQuery.startAfterDocument(_lastDocument);
+//   }
+
+//   if (!_hasMorePosts) return;
+
+//   var currentRequestIndex = _allPagedResults.length;
+
+//   pagePostsQuery.snapshots().listen((postsSnapshot) {
+//     if (postsSnapshot.docs.isNotEmpty) {
+//       var posts = postsSnapshot.docs
+//           .map((snapshot) => Posts.fromMap(snapshot.data(), snapshot.id))
+//           .where((mappedItem) => mappedItem.title != null)
+//           .toList();
+//       var pageExists = currentRequestIndex < _allPagedResults.length;
+
+//       // If the page exists update the posts for that page
+//       if (pageExists) {
+//         _allPagedResults[currentRequestIndex] = posts;
+//       }
+//       // If the page doesn't exist add the page data
+//       else {
+//         _allPagedResults.add(posts);
+//       }
+
+//       // Concatenate the full list to be shown
+//       var allPosts = _allPagedResults.fold<List<Posts>>(List<Posts>(),
+//           (initialValue, pageItems) => initialValue..addAll(pageItems));
+
+//       //  Broadcase all posts
+//       _postsController.add(allPosts);
+//       // Add the posts onto the controller
+//       //_postsController.add(posts);
+//       // Save the last document from the results only if it's the current last page
+//       if (currentRequestIndex == _allPagedResults.length - 1) {
+//         _lastDocument = postsSnapshot.docs.last;
+//       }
+
+//       // Determine if there's more posts to request
+//       _hasMorePosts = posts.length == 20;
+//     }
+//   });
+// }
+
+// void requestMoreData() => _requestPosts();
+//}

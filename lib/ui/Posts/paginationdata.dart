@@ -16,7 +16,7 @@ class Postpagination extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<PaginationModel>.reactive(
       builder: (context, model, child) => Container(
-        color: Colors.purple,
+        // color: Colors.purple,
         child: SafeArea(
           child: Scaffold(
             // appBar: AppBar(
@@ -24,12 +24,13 @@ class Postpagination extends StatelessWidget {
             //   centerTitle: true,
             // ),
             body: Container(
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [Colors.purple, Colors.blue])),
+              // decoration: BoxDecoration(
+              //     gradient: LinearGradient(
+              //         begin: Alignment.topLeft,
+              //         end: Alignment.bottomRight,
+              //         colors: [Colors.purple, Colors.blue])),
               child: RefreshIndicator(
+                backgroundColor: Colors.white,
                 child: PaginateFirestore(
                   itemsPerPage: 6,
                   //item builder type is compulsory.

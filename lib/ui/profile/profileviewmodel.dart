@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:sprinkle/model/user.dart';
 import 'package:sprinkle/services/Firestore_service.dart';
 import 'package:sprinkle/services/locator.dart';
+import 'package:sprinkle/services/realtimedb.dart';
 import 'package:sprinkle/services/router.gr.dart';
+import 'package:sprinkle/ui/cretepost/crestepostview.dart';
 //import 'package:sprinkle/ui/Editpost/editpostview.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -13,15 +15,22 @@ import '../../services/cuatombottomsheet.dart';
 class ProfileViewModel extends FutureViewModel {
   final FirestoreService _fsservice = locator<FirestoreService>();
   final NavigationService _navigationService = locator<NavigationService>();
-  final FirestoreService _firestoreService = locator<FirestoreService>();
+  //final FirestoreService _firestoreService = locator<FirestoreService>();
   final ToastService _toastService = locator<ToastService>();
+  final RealTimedb _realTimedb = locator<RealTimedb>();
+
   //final DialogService _dialogService = locator<DialogService>();
   final BottomSheetService _bottomSheetService = locator<BottomSheetService>();
 
   int _titleLength = 0, _descLenngth = 0;
-
+  //bool _extend  = false;
   int get titlelength => _titleLength;
   int get desclength => _descLenngth;
+  void navCre() {
+    _navigationService.navigateTo(
+      Routes.createPost,
+    );
+  }
 
   onTitleChanged(String value) {
     _titleLength = value.length;
@@ -34,7 +43,7 @@ class ProfileViewModel extends FutureViewModel {
   }
 
   void update(String name, String bio) async {
-    await _firestoreService.updateProfile(name, bio).then((value) async {
+    await _realTimedb.updateProfile(name, bio).then((value) async {
       print(value.toString());
       // notifyListeners();
       if (value == true) {
@@ -100,9 +109,9 @@ class ProfileViewModel extends FutureViewModel {
 
   // //User _currentHuman;
   // User get currentHuman => getData;
-  void navigateprofile() {
-    _navigationService.navigateTo(Routes.editPostView);
-  }
+  // void navigateprofile() {
+  //   _navigationService.navigateTo(Routes.editPostView);
+  // }
 
   // @override
   // void onSubscribed() {

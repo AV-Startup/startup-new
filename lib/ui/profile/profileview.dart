@@ -20,11 +20,11 @@ class ProfileView extends StatelessWidget {
       initialiseSpecialViewModelsOnce: true,
       builder: (context, model, child) {
         return Container(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [Colors.purple, Colors.blue])),
+          // decoration: BoxDecoration(
+          //     gradient: LinearGradient(
+          //         begin: Alignment.topLeft,
+          //         end: Alignment.bottomRight,
+          //         colors: [Colors.purple, Colors.blue])),
           child: Scaffold(
             backgroundColor: Colors.transparent,
             body: !(model.isBusy)
@@ -82,7 +82,7 @@ class ProfileView extends StatelessWidget {
                                                     ),
                                                   ),
                                                   Text(
-                                                    model.data.name
+                                                    model.data.fullName
                                                         .toString()
                                                         .capitalize(),
                                                     //model.data.name.toString().capitalize(),
@@ -139,15 +139,15 @@ class ProfileView extends StatelessWidget {
                                                       color: Colors.black,
                                                     ),
                                                   ),
-                                                  // FittedBox(
-                                                  //   child: Flag(
-                                                  //     model.data.countryCode
-                                                  //         .toString(),
-                                                  //     height: 30,
-                                                  //     width: 55,
-                                                  //     fit: BoxFit.fill,
-                                                  //   ),
-                                                  // ),
+                                                  FittedBox(
+                                                    child: Flag(
+                                                      model.data.countryCode
+                                                          .toString(),
+                                                      height: 30,
+                                                      width: 55,
+                                                      fit: BoxFit.fill,
+                                                    ),
+                                                  ),
                                                 ],
                                               ),
                                               Row(
@@ -217,7 +217,7 @@ class ProfileView extends StatelessWidget {
                                           Container(
                                             child: ElevatedButton(
                                                 style: ElevatedButton.styleFrom(
-                                                  primary: Colors.cyanAccent,
+                                                  primary: Colors.blue.shade200,
                                                 ),
                                                 child: Text(
                                                   'Edit profile',
@@ -263,6 +263,15 @@ class ProfileView extends StatelessWidget {
                 : Center(
                     child: CircularProgressIndicator(),
                   ),
+            floatingActionButton: FloatingActionButton.extended(
+              //isExtended: false,
+              backgroundColor: Colors.indigoAccent,
+              icon: SvgPicture.asset('assets/edit.svg'),
+              label: Text('Create Post'),
+              onPressed: () {
+                model.navCre();
+              },
+            ),
           ),
         );
       },

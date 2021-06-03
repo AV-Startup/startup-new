@@ -9,12 +9,12 @@ class Posts {
   final String flagCode;
   final int likeCount;
   final String keywords;
-  final String name;
+  final String fullName;
 
   Posts(
       {@required this.publisherId,
       @required this.desc,
-      this.name,
+      this.fullName,
       this.title,
       this.timestamp,
       this.epochs,
@@ -24,7 +24,7 @@ class Posts {
 
   Map<String, dynamic> toMap() {
     return {
-      'name': name,
+      'fullName': fullName,
       'title': title,
       'publisherId': publisherId,
       'desc': desc,
@@ -41,7 +41,7 @@ class Posts {
 
     return Posts(
         title: map['title'],
-        name: map['name'],
+        fullName: map['fullName'],
         publisherId: documentId,
         desc: map['desc'],
         timestamp: map['timestamp'],

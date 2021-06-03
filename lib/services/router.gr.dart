@@ -9,7 +9,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-import '../ui/Editpost/editprofileview.dart';
 import '../ui/Home/home_view.dart';
 import '../ui/Login/login_view.dart';
 import '../ui/Sign_up/sign_up_view.dart';
@@ -22,7 +21,6 @@ class Routes {
   static const String createPost = '/create-post';
   static const String loginView = '/login-view';
   static const String profileView = '/profile-view';
-  static const String editPostView = '/edit-post-view';
   static const String home = '/Home';
   static const String splash = '/';
   static const all = <String>{
@@ -30,7 +28,6 @@ class Routes {
     createPost,
     loginView,
     profileView,
-    editPostView,
     home,
     splash,
   };
@@ -44,7 +41,6 @@ class Router extends RouterBase {
     RouteDef(Routes.createPost, page: CreatePost),
     RouteDef(Routes.loginView, page: LoginView),
     RouteDef(Routes.profileView, page: ProfileView),
-    RouteDef(Routes.editPostView, page: EditPostView),
     RouteDef(Routes.home, page: Home),
     RouteDef(Routes.splash, page: Splash),
   ];
@@ -72,12 +68,6 @@ class Router extends RouterBase {
     ProfileView: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => ProfileView(),
-        settings: data,
-      );
-    },
-    EditPostView: (data) {
-      return MaterialPageRoute<dynamic>(
-        builder: (context) => EditPostView(),
         settings: data,
       );
     },

@@ -3,10 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../ViewOtherProf/ViewProfile.dart';
+import 'package:sprinkle/capitilize.dart';
 
 ///import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:like_button/like_button.dart';
-import 'package:sprinkle/capitilize.dart';
+//import 'package:sprinkle/capitilize.dart';
 import 'package:sprinkle/ui/Posts/paginationmodel.dart';
 import 'package:stacked/stacked.dart';
 
@@ -32,12 +33,12 @@ class PostItem extends StatelessWidget {
     // return success? !isLiked:isLiked;
     if (!isLiked) {
       mod.fetchExist(data.id);
-      Future.delayed(Duration(milliseconds: 2000))
-          .then((value) => print(value));
+      // Future.delayed(Duration(milliseconds: 2000))
+      //     .then((value) => print(value));
       print("liked");
     } else {
-      Future.delayed(Duration(milliseconds: 2000))
-          .then((value) => print(value));
+      // Future.delayed(Duration(milliseconds: 2000))
+      //     .then((value) => print(value));
       print("notliked");
     }
 
@@ -97,10 +98,35 @@ class PostItem extends StatelessWidget {
                             // ),
                             GestureDetector(
                               onTap: () {
+                                // Navigator.push(
+                                //   context,
+                                //   MaterialPageRoute(
+                                //       builder: (context) => ViewOtherProfile(
+                                //           dae: data.data()['publisherId'])),
+                                // );
                                 showDialog(
                                   context: context,
-                                  builder: (_) => ViewOtherProfile(
-                                    dae: data.data()['publisherId'],
+                                  builder: (_) => Dialog(
+                                    backgroundColor: Colors.transparent,
+                                    child: Card(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(32.0),
+                                      ),
+                                      child: Container(
+                                        height: 350,
+                                        width: 350,
+                                        decoration: new BoxDecoration(
+                                          shape: BoxShape.rectangle,
+                                          color: const Color(0xFFFFFF),
+                                          borderRadius: new BorderRadius.all(
+                                              new Radius.circular(32.0)),
+                                        ),
+                                        child: ViewOtherProfile(
+                                          dae: data.data()['publisherId'],
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                 );
                                 print("profile");
@@ -129,7 +155,7 @@ class PostItem extends StatelessWidget {
                             ),
                             Flexible(
                               child: Text(
-                                data.data()['name'].toString().capitalize(),
+                                data.data()['fullName'].toString().capitalize(),
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                     fontWeight: FontWeight.w700, fontSize: 20),
@@ -179,7 +205,7 @@ class PostItem extends StatelessWidget {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  LikeButton(
+                                  /* LikeButton(
                                     //isLiked:model.isBusy ? false : model.dataReady,
                                     onTap: onLikeButtonTapped,
                                     // key: _globalKey,
@@ -241,7 +267,7 @@ class PostItem extends StatelessWidget {
 
                                       return result;
                                     },
-                                  ),
+                                  ),*/
                                   GestureDetector(
                                     onTap: () {
                                       print("yttttsss" +

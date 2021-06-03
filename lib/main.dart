@@ -8,6 +8,7 @@ import 'services/dialogservice.dart';
 import 'services/router.gr.dart' as k;
 import 'package:sprinkle/services/locator.dart';
 import 'services/cuatombottomsheet.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 /*import 'package:sprinkle/services/Firebase_core.dart';
 import 'splash.dart';
@@ -24,7 +25,7 @@ void main() async {
   setupDialogUi();
 
   setupBottomSheetUi();
-  runApp(MyApp());
+  initializeDateFormatting().then((_) => runApp(MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -45,7 +46,10 @@ class MyApp extends StatelessWidget {
         navigatorKey: StackedService.navigatorKey,
         //locator<NavigationService>().navigatorKey,
       ),
+      theme: ThemeData(
+          brightness: Brightness.light, canvasColor: Colors.transparent),
       onGenerateRoute: k.Router(),
+      themeMode: ThemeMode.system,
       //home: Splash(),
       /*home: FutureBuilder(
           future: _coreservice.getLogStatus(),
